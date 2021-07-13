@@ -44,8 +44,8 @@ h1, h2, h3, h4, h5, p, span {
   height: 100vh;
   overflow-y: scroll;
 }
-#GaleryContainer img {
-  width: 100%;
+#GaleryContainer div img {
+  width: 20%;
 }
 
 /*# sourceMappingURL=App.css.map */
