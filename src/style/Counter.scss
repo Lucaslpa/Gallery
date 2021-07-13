@@ -1,0 +1,25 @@
+
+
+.Container {
+    display: flex;
+    background-color: rgb(102, 102, 102);
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+
+     .number {
+           font-size: 200px !important;
+           color: white;
+     }
+     .counters {
+          display: flex;
+          width: 100%;
+          max-width: 400px;
+          justify-content: space-evenly;
+          button {
+               padding: 10px 20px;
+               cursor: pointer;
+          }
+     }     
+} 
