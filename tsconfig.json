@@ -21,7 +21,7 @@
     "jsx": "react-jsx",
     "rootDir": "./src",
     "outDir": "./dist",
-   
+    "isolatedModules": true
   },
   "include": [
     "src"

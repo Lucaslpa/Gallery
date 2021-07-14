@@ -1,10 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-
-const initialState:any = {}
-
-type state = {
-    value: number,
+export type image = {
+    id: number,
+    photographer: string,
+    imageURL: string,
+    like: boolean
+}
+export type state =  {
+    images: Array<image>,
+    favoriteImages: Array<image>,
+    trashImages: Array<image>,
     status: string
 }
 type action = {
@@ -12,25 +17,58 @@ type action = {
     payload: any,
 }
 
-const increment = (state: state) => {
-     state.value++
+const initialState: state = {
+    images: [],
+    favoriteImages: [],
+    trashImages: [], 
+    status: 'loading'
 }
-const decrement = (state: state) => {
-    state.value--
+
+function setImages(state: state, action: action) {
+    state.images = action.payload
 }
+
+function likeImage(state: state, action: action) {
+  const index = action.payload.index
+  state.images[index].like = true
+  state.favoriteImages.unshift(state.images[index])
+
+}
+
+function deslikeImage(state: state, action: action) {
+    const index = action.payload.index
+    state.images[index].like = false 
+    state.favoriteImages = action.payload.newFavorites
+}
+
+
+function deleteImage(state: state, action: action) {
+    state.trashImages.unshift(action.payload.deletedElement)
+    state.favoriteImages =  action.payload.newFavorites
+    state.images =  action.payload.newImages
+  
+  }
+  
+  function recoveryImage(state: state, action: action) {
+      state.images =  action.payload.newImages
+      state.trashImages = action.payload.newTrashImages
+  }
+
 const newStatus = (state: state, action: action) => {
-        console.log(action)
-    state.status = action.payload
+    console.log(action)
+state.status = action.payload
 }
 const counterSliceConfig = {
-    name: "counter",
+    name: "images",
     initialState,
     reducers: {
-        increment,
-        decrement,
-        newStatus
+        setImages,
+        newStatus,
+        likeImage,
+        deslikeImage,
+        deleteImage,
+        recoveryImage
     }
 }
-export const counterSlice = createSlice(counterSliceConfig)
+export const imagesSlice = createSlice(counterSliceConfig)
 
-export {}

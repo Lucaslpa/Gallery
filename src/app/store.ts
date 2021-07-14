@@ -1,12 +1,15 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {counterSlice} from '../features/counterSlice'
 import createSagaMiddleware from 'redux-saga'
-import {rootSaga} from '../features/middlewares'
+import {rootSaga} from '../features/rootSaga'
+import {imagesSlice, counterSlice} from '../features/index'
 
 const sagaMiddleware =  createSagaMiddleware()
-const configConfigureStore = {reducer: { counter: counterSlice.reducer
-},
-middleware:[sagaMiddleware]
+const configConfigureStore = {
+    reducer: { 
+        counter: counterSlice.reducer,
+        images:  imagesSlice.reducer,      
+    },
+    middleware:[sagaMiddleware]
 }
 export const store = configureStore(configConfigureStore)
 sagaMiddleware.run(rootSaga)

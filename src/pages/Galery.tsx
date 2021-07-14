@@ -1,20 +1,45 @@
-import {useEffect, useState} from 'react'
-import {getImages} from '../api/getImagesFromApi'
-export  function Galery() {
- 
+import {useEffect} from 'react'
+import {useAppDispatch, useAppSelector} from '../app/hooks'
+import Heart from '../assets/icons8-gostar.gif'
+import Trash from '../assets/icons8-lixo.svg'
+import {SectionFavorite, SectionHome, SectionTrash, Section} from './components/'
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
 
-   useEffect( () => {
-    getImages()
-   }, [])
+export  function Galery() {
+    const images = useAppSelector((state) => state.images.images)
+    const favorites = useAppSelector((state) => state.images.favoriteImages)
+
+    
 
 
     return (
         <div id="GaleryContainer" className='GaleryContainer' >
           
-             <div>
-              <img src='https://images.pexels.com/photos/8624947/pexels-photo-8624947.jpeg' ></img>
-            </div>
-           
+           <Router> 
+           <header className="containerHeader">
+                <Link to='/' className='Title' >Sua Galeria</Link>
+                <div className='optionsContainer' >
+                    <Link to='Favorite'> <img alt='' src={Heart} /> Favoritos</Link>
+                    <Link to='Trash'> <img alt='' src={Trash} /> Lixeira</Link>
+                </div>
+           </header>
+                <Switch>
+                    <Route exact path='/'>
+                    <Section images={images} />
+                    </Route>
+                    <Route  path='/Favorite'>
+                    <Section images={favorites} />
+                    </Route>
+                    <Route  path='/Trash'>
+                     <SectionTrash />
+                    </Route>
+                </Switch>
+           </Router>
           
         </div>
     )

@@ -1,10 +1,129 @@
-#GaleryContainer {
+.GaleryContainer {
     height: 100vh;
     overflow-y: scroll;
-    div {
-        img {
-            width: 20%;
-   
+    justify-content: center;
+  
+}
+
+.containerHeader {
+    padding: 0 ;
+     height: auto;
+    padding: 20px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .Title {
+        text-decoration: none;
+        font-family: Roboto, sans-serif;
+        font-weight: 400;
+        font-size: 35px;
+        color: rgb(41, 41, 41);
+    }
+    .optionsContainer {
+        display: flex;
+        width: 100%;
+        max-width:  260px; 
+        justify-content: space-evenly;
+        color: black;
+      
+        a {
+            display: flex;
+            align-items: center;
+            border-radius: 5%;
+            padding: 5px;
+            color: black;
+            img {
+                width: 20px; 
+                margin: 0 10px;
+            }
+            cursor: pointer;
+            transition: 0.2s;
+            &:hover {
+                transform: scale(1.2);
+            }
         }
+    }
+
+}
+
+
+.imagesContainer {
+     height: auto;
+     width: 100% ;
+     overflow-x: hidden;
+     padding: 20px;
+     display: flex; 
+     flex-wrap: wrap;
+     justify-content: center;
+     .Image {
+         height:100%;
+         position: relative;
+         .Infos {
+             position: absolute;
+             bottom: 10%; 
+             left: 5%;
+             background-color: rgba(0, 0, 0, 0.459);
+             width: 90%;
+             color: white;
+             padding: 10px;
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+             .ImageButtons {
+                    width: 100%;
+                    max-width: 150px;
+                    display: flex;
+                    justify-content: space-around;
+                    img {
+                        width: 15px; 
+                    }
+                    button {
+                        padding: 0;
+                        border-radius: 100%;
+                        border:none; 
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;    
+                        &:hover {
+                            background-color: rgb(192, 192, 192);
+                        }                                
+                    }
+             }
+
+         }
+         img {
+            max-height: 300px;
+            margin: 10px;
+            height:100%;
+            max-width: 95%;
+            cursor: pointer; 
+            transition:0.2s; 
+            grid-area: auto;
+            grid-area: auto;
+            
+       }
+     }
+   
+     
+}
+
+
+
+
+@media screen and (max-width: 400px) {
+    .containerHeader {
+         flex-direction: column;
+    }
+    .optionsContainer {
+        margin-top: 10%; 
+
+    }
+    .imagesContainer {
+    img {
+        width: 100%;
+        max-height: auto;
+        height: auto;
+
+    }
     }
 }

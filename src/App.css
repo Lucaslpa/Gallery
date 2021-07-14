@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-body, html {
+body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -14,7 +14,7 @@ h1, h2, h3, h4, h5, p, span {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .Container {
@@ -40,12 +40,121 @@ h1, h2, h3, h4, h5, p, span {
   cursor: pointer;
 }
 
-#GaleryContainer {
+.GaleryContainer {
   height: 100vh;
   overflow-y: scroll;
+  justify-content: center;
 }
-#GaleryContainer div img {
-  width: 20%;
+
+.containerHeader {
+  padding: 0;
+  height: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerHeader .Title {
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: 35px;
+  color: #292929;
+}
+.containerHeader .optionsContainer {
+  display: flex;
+  width: 100%;
+  max-width: 260px;
+  justify-content: space-evenly;
+  color: black;
+}
+.containerHeader .optionsContainer a {
+  display: flex;
+  align-items: center;
+  border-radius: 5%;
+  padding: 5px;
+  color: black;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.containerHeader .optionsContainer a img {
+  width: 20px;
+  margin: 0 10px;
+}
+.containerHeader .optionsContainer a:hover {
+  transform: scale(1.2);
+}
+
+.imagesContainer {
+  height: auto;
+  width: 100%;
+  overflow-x: hidden;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.imagesContainer .Image {
+  height: 100%;
+  position: relative;
+}
+.imagesContainer .Image .Infos {
+  position: absolute;
+  bottom: 10%;
+  left: 5%;
+  background-color: rgba(0, 0, 0, 0.459);
+  width: 90%;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.imagesContainer .Image .Infos .ImageButtons {
+  width: 100%;
+  max-width: 150px;
+  display: flex;
+  justify-content: space-around;
+}
+.imagesContainer .Image .Infos .ImageButtons img {
+  width: 15px;
+}
+.imagesContainer .Image .Infos .ImageButtons button {
+  padding: 0;
+  border-radius: 100%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imagesContainer .Image .Infos .ImageButtons button:hover {
+  background-color: silver;
+}
+.imagesContainer .Image img {
+  max-height: 300px;
+  margin: 10px;
+  height: 100%;
+  max-width: 95%;
+  cursor: pointer;
+  transition: 0.2s;
+  grid-area: auto;
+  grid-area: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .containerHeader {
+    flex-direction: column;
+  }
+
+  .optionsContainer {
+    margin-top: 10%;
+  }
+
+  .imagesContainer img {
+    width: 100%;
+    max-height: auto;
+    height: auto;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */
