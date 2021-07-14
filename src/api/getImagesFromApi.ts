@@ -1,5 +1,3 @@
-import {customFetch} from './customFetch'
-
 
 type obj = {
         id: number,
