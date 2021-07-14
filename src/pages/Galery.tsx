@@ -1,8 +1,7 @@
-import {useEffect} from 'react'
-import {useAppDispatch, useAppSelector} from '../app/hooks'
+import { useAppSelector} from '../app/hooks'
 import Heart from '../assets/icons8-gostar.gif'
 import Trash from '../assets/icons8-lixo.svg'
-import {SectionFavorite, SectionHome, SectionTrash, Section} from './components/'
+import {SectionTrash, Section} from './components/'
 import {
     BrowserRouter as Router,
     Switch,
@@ -13,9 +12,6 @@ import {
 export  function Galery() {
     const images = useAppSelector((state) => state.images.images)
     const favorites = useAppSelector((state) => state.images.favoriteImages)
-
-    
-
 
     return (
         <div id="GaleryContainer" className='GaleryContainer' >

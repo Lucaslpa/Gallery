@@ -1,21 +1,18 @@
-import {useEffect} from 'react'
 import {useAppDispatch, useAppSelector} from '../../app/hooks'
 import BlackHeart from '../../assets/blackHeart.svg'
 import RedHeart from '../../assets/redHeart.svg'
 import Trash from'../../assets/icons8-lixo.svg'
 import {image} from '../../features/images/imagesSlice'
 
-
 export function Section({images}: {images: Array<image>})  {
 
     const favorites = useAppSelector((state) => state.images.favoriteImages)
     const imagesST = useAppSelector((state) => state.images.images)
-
     const dispatch  = useAppDispatch()
+
     window.onload = () =>  dispatch({type: "images/setImagesAsync"}); 
-            
-                       
-     function LikeImage(index:number , id:number) {
+                            
+    function LikeImage(index:number , id:number) {
          const findedIndex = favorites.findIndex(e => e.id ===  id)
          if(findedIndex === -1) {
              return  dispatch({type:"images/likeImage", payload: {index}})
@@ -24,16 +21,11 @@ export function Section({images}: {images: Array<image>})  {
             dispatch({type:"images/deslikeImage", payload: {index, newFavorites: newFavorites }})
          }
      } 
-     
-     
-     function DeleteImage(index:number, id:number) {
+    function DeleteImage(index:number, id:number) {
          const deletedElement = images[index]
          const newFavorites = favorites.filter(image => image.id !== id)
          const newImages = imagesST.filter(image => image.id !== id)
-         
-         console.log('delete', newFavorites, newImages)
          dispatch({type:"images/deleteImage", payload: {deletedElement, newFavorites, newImages}})
-
      }
     return (
         <section className="imagesContainer">
