@@ -1,7 +1,5 @@
 <h2>Gallery</h2>
-<p>Galery foi feito para aplicar os conceitos introdutórios do redux e redux saga. Possui funcionalidades básicas que utilizam "state management" do redux 
-como: dar like em imagens adicionando-as no seção de favoritos, excluir e recuperar imagens.
-.</p>
+Deploy: https://elated-neumann-5aca83.netlify.app/
 
 <br/>
 
