@@ -1,5 +1,4 @@
 <h2>Gallery</h2>
-Deploy: https://elated-neumann-5aca83.netlify.app/
 
 <br/>
 
