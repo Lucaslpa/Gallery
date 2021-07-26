@@ -37,7 +37,17 @@ function likeImage(state: state, action: action) {
 
 function deslikeImage(state: state, action: action) {
     const index = action.payload.index
-    state.images[index].like = false 
+    const newImages = state.images.map((element, indexElement) => {
+        if(indexElement === index) {
+            element.like = false 
+            return  element
+        } else {
+            return element
+        }
+     })
+
+     state.images  = [...newImages]
+
     state.favoriteImages = action.payload.newFavorites
 }
 
@@ -55,7 +65,6 @@ function deleteImage(state: state, action: action) {
   }
 
 const newStatus = (state: state, action: action) => {
-    console.log(action)
 state.status = action.payload
 }
 const counterSliceConfig = {

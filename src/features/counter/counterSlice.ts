@@ -19,7 +19,6 @@ const decrement = (state: state) => {
     state.value--
 }
 const newStatus = (state: state, action: action) => {
-        console.log(action)
     state.status = action.payload
 }
 const counterSliceConfig = {

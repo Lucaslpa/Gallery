@@ -13,6 +13,7 @@ export function Section({images}: {images: Array<image>})  {
     window.onload = () =>  dispatch({type: "images/setImagesAsync"}); 
                             
     function LikeImage(index:number , id:number) {
+        console.log('index',index)
          const findedIndex = favorites.findIndex(e => e.id ===  id)
          if(findedIndex === -1) {
              return  dispatch({type:"images/likeImage", payload: {index}})
@@ -27,18 +28,29 @@ export function Section({images}: {images: Array<image>})  {
          const newImages = imagesST.filter(image => image.id !== id)
          dispatch({type:"images/deleteImage", payload: {deletedElement, newFavorites, newImages}})
      }
+
+    function getIndexInImages(images: image[], img: image){
+          let index = 0
+          images.forEach((item, indexItem) =>{
+              if( item.id === img.id) {
+                   index = indexItem
+              }
+          })
+          return index 
+    }
+
     return (
         <section className="imagesContainer">
-        {images.length === 0 ? <h1>loading</h1> : images.map((image, index) => 
+        {images.length === 0 ? <h1>loading</h1> : images.map((image, indexE) => 
                   <div key={image.id} className='Image' onClick={() => {} }  >
                       <img alt=''  src={image.imageURL} ></img>
                       <div className='Infos' >
                             <span>{image.photographer}</span>
                             <div className='ImageButtons' >
-                                  <button className='FavoriteButton' onClick={() => LikeImage(index, image.id)} >
+                                  <button className='FavoriteButton' onClick={() => LikeImage(getIndexInImages(imagesST, image), image.id)} >
                                       <img alt='like' src={image.like ? RedHeart : BlackHeart } />
                                   </button>
-                                  <button className='TrashButton' onClick={() => DeleteImage(index, image.id)}  >
+                                  <button className='TrashButton' onClick={() => DeleteImage(indexE, image.id)}  >
                                       <img alt='delete' src={Trash} />
                                   </button>
                             </div>
